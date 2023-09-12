@@ -15,10 +15,6 @@ Reset button to start a new game.
 
 ## Screenshots
 
-Include screenshots or GIFs of your game in action to provide a visual representation of the game.
-
-## Screenshots
-
 ![App Screenshot](./img/Screen-web-img.jpeg)
 
 ## Getting Started
