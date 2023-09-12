@@ -9,6 +9,7 @@ const restBtn = document.querySelector(".restBtn");
 const dicesImages = document.querySelector(".dices-images");
 const player1Value = document.querySelector(".value-1");
 const player2Value = document.querySelector(".value-2");
+const h1Text = document.querySelector(".h1Text");
 
 // todo Array of dice images
 const images = [
@@ -20,63 +21,82 @@ const images = [
   "./img/value6-dice.png",
 ];
 
+// ? winner score
+const winnerScore = 30;
+// ? Initial player value = 0;
+let player1Score = 0;
+let player2Score = 0;
+
 // ! Function to set a default image
 const setDefaultImage = () => {
-  // * Create an img element and set its source attribute to the default image
   const img = document.createElement("img");
   img.setAttribute("src", images[0]);
-
-  // * Clear previous dice image
   dicesImages.innerHTML = "";
-
-  // * Append the image to the dicesImages container
   dicesImages.appendChild(img);
-  // * set default span value as a zero
   player1Value.textContent = 0;
   player2Value.textContent = 0;
+  player1Score = 0;
+  player2Score = 0;
+  h1Text.textContent = "let's go to play";
+  h1Text.classList.remove("winner");
+  player1Btn.disabled = false;
+  player2Btn.disabled = false;
 };
 
 // ! Function to handle player button 1
 const rollDice1 = () => {
-  // * Generate a random number for selecting a dice image
   const randomNum = Math.floor(Math.random() * images.length);
-
-  // * Create an img element and set its source attribute
   const img = document.createElement("img");
   img.setAttribute("src", images[randomNum]);
-
-  // * Clear previous dice image
   dicesImages.innerHTML = "";
-
-  // * Append the image to the dicesImages container
   dicesImages.appendChild(img);
-
   let printvalue1 = randomNum + 1;
-  let add = printvalue1 * 2;
+  player1Score += printvalue1;
+  if (player1Score >= winnerScore) {
+    h1Text.textContent =
+      "🎉🎉 Congratulations Player 1! 🏆 You're the winner! 🥇 Well done! 👏👏";
+    h1Text.classList.add("winner");
+    player1Value.textContent = player1Score;
 
-  console.log(add);
-  // * Update the player1Value span with the rolled value
-  player1Value.textContent = printvalue1;
+    // ? disable both player btn
+    player1Btn.disabled = true;
+    player2Btn.disabled = true;
+  } else {
+    player1Value.textContent = player1Score;
+    h1Text.textContent = "player-2 to play";
+
+    // ? disable one button
+    player1Btn.disabled = true;
+    player2Btn.disabled = false;
+  }
 };
 
 // ! Function to handle player button 2
 const rollDice2 = () => {
-  // * Generate a random number for selecting a dice image
   const randomNum = Math.floor(Math.random() * images.length);
-
-  // * Create an img element and set its source attribute
   const img = document.createElement("img");
   img.setAttribute("src", images[randomNum]);
-
-  // * Clear previous dice image
   dicesImages.innerHTML = "";
-
-  // * Append the image to the dicesImages container
   dicesImages.appendChild(img);
+  let printvalue2 = randomNum + 1;
+  player2Score += printvalue2;
+  if (player2Score >= winnerScore) {
+    h1Text.textContent =
+      "🎉🎉 Congratulations Player 2! 🏆 You're the winner! 🥇 Well done! 👏👏";
+    h1Text.classList.add("winner");
+    player2Value.textContent = player2Score;
 
-  printvalue2 = randomNum + 1;
-  // * Update the player2Value span with the rolled value
-  player2Value.textContent = printvalue2;
+    // ? disable both player btn
+    player1Btn.disabled = true;
+    player2Btn.disabled = true;
+  } else {
+    player2Value.textContent = player2Score;
+    h1Text.textContent = "Player-1 to play";
+
+    // ? disable one button
+    player1Btn.disabled = false;
+    player2Btn.disabled = true;
+  }
 };
 
 // todoAdding event listeners to the buttons

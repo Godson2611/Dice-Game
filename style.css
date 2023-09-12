@@ -1,8 +1,10 @@
 /** @format */
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -10,42 +12,47 @@
   --dark-green: #008000;
   --light-green: #04c52e;
   --gray: #808080;
-  --babby-pink: #ff9090;
+  --baby-pink: #ff9090;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f2f2f2;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
+  text-align: center;
+  padding: 20px;
+  margin-top: 100px;
 }
 
 .container > p {
   color: var(--dark-green);
+  font-size: 24px;
 }
 
 .container > h1 {
   color: black;
+  font-size: 36px;
+  margin-bottom: 100px;
+  margin-top: 80px;
 }
 
 .cards-container {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: space-around;
-  gap: 15rem;
-  margin-top: 10rem;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 .player-1,
 .player-2 {
+  flex: 1;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 button {
@@ -53,6 +60,15 @@ button {
   color: white;
   padding: 10px;
   cursor: pointer;
+  width: auto;
+  border-radius: 2px;
+  margin-top: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .player-1 > button {
@@ -64,7 +80,7 @@ button {
 }
 
 .container > button {
-  background-color: var(--babby-pink);
+  background-color: var(--baby-pink);
 }
 
 .dices-images {
@@ -74,4 +90,49 @@ button {
 span {
   font-size: 50px;
   font-weight: 700;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .player-1,
+  .player-2 {
+    margin: 1rem 0;
+  }
+}
+
+/* Add this to your CSS file or style section */
+@keyframes winnerScale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes winnerColorChange {
+  0% {
+    color: inherit;
+  }
+  50% {
+    color: #04c52e; /* Change to the color you prefer */
+  }
+  100% {
+    color: inherit;
+  }
+}
+
+/* Add animation properties to the winner class */
+.winner {
+  animation: winnerScale 1s ease-in-out infinite,
+    winnerColorChange 2s ease-in-out infinite;
+  transform-origin: center;
 }
