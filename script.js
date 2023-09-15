@@ -37,8 +37,12 @@ const setDefaultImage = () => {
   player2Value.textContent = 0;
   player1Score = 0;
   player2Score = 0;
-  h1Text.textContent = "let's go to play";
+  h1Text.textContent = "Let’s go to play 🎲🎲 dices game";
   h1Text.classList.remove("winner");
+
+  // ? change color button
+  player1Btn.classList.remove("btn-color");
+  player2Btn.classList.remove("btn-color");
   player1Btn.disabled = false;
   player2Btn.disabled = false;
 };
@@ -64,6 +68,10 @@ const rollDice1 = () => {
   } else {
     player1Value.textContent = player1Score;
     h1Text.textContent = "player-2 to play";
+
+    // ? change color button
+    player2Btn.classList.remove("btn-color");
+    player1Btn.classList.add("btn-color");
 
     // ? disable one button
     player1Btn.disabled = true;
@@ -92,6 +100,10 @@ const rollDice2 = () => {
   } else {
     player2Value.textContent = player2Score;
     h1Text.textContent = "Player-1 to play";
+
+    // ? change color button
+    player1Btn.classList.remove("btn-color");
+    player2Btn.classList.add("btn-color");
 
     // ? disable one button
     player1Btn.disabled = false;

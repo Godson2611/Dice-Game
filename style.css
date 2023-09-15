@@ -58,6 +58,7 @@ body {
 button {
   border: none;
   color: white;
+  background-color: var(--dark-green);
   padding: 10px;
   cursor: pointer;
   width: auto;
@@ -71,11 +72,7 @@ button:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.player-1 > button {
-  background-color: var(--dark-green);
-}
-
-.player-2 > button {
+.btn-color {
   background-color: var(--gray);
 }
 
